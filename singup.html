@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff0000, #eae9ec);
+        }
+
+        #signupform {
+            width: 380px;
+            padding: 35px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 28px;
+        }
+
+        label {
+            display: inline-block;
+            color: #333;
+            font-weight: bold;
+            margin-top: 12px;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            outline: none;
+            font-size: 15px;
+            margin-bottom: 8px;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102,126,234,0.5);
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 7px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 450px) {
+            #signupform {
+                width: 90%;
+                padding: 25px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+    <script src="https://code.jquery.com/jquery-4.0.0.js"></script>
+
+    <form action="" id="signupform">
+
+        <h1><b>Sign Up Form</b></h1>
+
+        <label for="name">Enter Name</label><br>
+        <input type="text" id="name" placeholder="Enter Your Name"><br>
+
+        <label for="email">Enter Email</label><br>
+        <input type="text" id="email" placeholder="Enter Email"><br>
+
+        <label for="password">Enter Password</label><br>
+        <input type="password" id="password" placeholder="Enter Password"><br>
+
+        <label for="cpassword">Confirm Password</label><br>
+        <input type="password" id="cpassword" placeholder="Confirm Password"><br>
+
+        <button type="submit">Signup</button>
+
+    </form>
+
+    <script>
+        $(document).ready(function () {
+
+            function checkname() {
+                var namevalue = $("#name").val();
+                var nameregexp = /^[A-Z][a-zA-Z0-9]{5,10}$/;
+
+                if (!nameregexp.test(namevalue)) {
+                    alert("Please enter a valid name (6–11 characters, starting with a capital letter).");
+                    return false;
+                }
+                return true;
+            }
+
+            function checkemail() {
+                var emailvalue = $("#email").val();
+                var emailregexp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (!emailregexp.test(emailvalue)) {
+                    alert("Please enter a valid email address.");
+                    return false;
+                }
+                return true;
+            }
+
+            function checkpassword() {
+                var passwordvalue = $("#password").val();
+                var cpassword = $("#cpassword").val();
+
+                var passwordregexp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[A-Za-z0-9]).{8,}$/;
+
+                if (!passwordregexp.test(passwordvalue)) {
+                    alert("Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, and a number.");
+                    return false;
+                }
+
+                if (cpassword != passwordvalue) {
+                    alert("Passwords do not match. Please try again.");
+                    return false;
+                }
+
+                return true;
+            }
+
+            $("#signupform").submit(function (e) {
+                e.preventDefault();
+
+                if (checkname() && checkemail() && checkpassword()) {
+                    alert("Registration completed successfully!");
+                }
+            });
+
+        });
+    </script>
+
+</body>
+</html>
+
+</body>
+</html>
